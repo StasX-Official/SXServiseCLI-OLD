@@ -1,0 +1,61 @@
+sxservise.app = ".sxg"
+logs.txt
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+#######  ###  ##  #######  #######  ######   ##  ###  #######  #######  #######           #######   ##      #######
+ ##       ###  ##  ##       ##       ##  ##   ##  ###    ###    ##       ##                ##  ###   ##        ###
+ #######  ###  ##  #######  ##       ##  ##   ##  ###    ###    #######  ##                ##  ###   ##        ###
+      ##   #####        ##  #######  #######  ##  ###    ###         ##  #######           ##       ###        ###
+ ###  ##  ##  ###  ###  ##  ###      ### ###  ## ####    ###    ###  ##  ###               ##   ##  ###        ###
+ ###  ##  ##  ###  ###  ##  # #      ### ###   #####     ###    ###  ##  # #               ##   ##  ###        ###
+ #######  ##  ###  #######  #######  ### ###    ###    #######  #######  #######           #######  ######   #######
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+15:18:34 The exit command is running
+15:18:42 The loginCL command is running
+15:18:42 Error code: 404. Unknown command.
+15:18:42 The exit command is running
+15:43:21 The login command is running
+15:43:21 The help command is running
+15:43:21 The support command is running
+15:43:21 The localhost command is running
+15:45:53 The localhost command is running
+15:45:53 The help command is running
+15:45:53 The support command is running
+15:45:53 The login command is running
+15:45:53 The exit command is running
+15:47:18 The localhost command is running
+15:47:18 Starting localhost...
+15:47:18 Localhost server stopped.
+15:51:02 The localhost command is running
+15:51:02 Starting localhost...
+15:51:02 Localhost server stopped.
+20:13:08 The support command is running
+20:13:08 The help command is running
+20:13:08 The localhost command is running
+20:13:08 The localhost command is running
+20:13:55 The localhost command is running
+20:13:55 The stop_localhost command is running
+20:13:55 Stopping the localhost server.
+20:14:32 The login command is running
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 Error code: 404. Unknown command.
+20:14:32 The localhost command is running
+20:14:32 Starting localhost...
+20:14:32 Localhost server stopped.
