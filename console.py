@@ -4,7 +4,10 @@ import os
 import json
 import tqdm
 import qrcode
+import string
 import random
+import platform
+import subprocess
 import http.server
 import socketserver
 from tqdm import tqdm
@@ -13,7 +16,7 @@ from colorama import init, Fore, Back, Style
 
 #Project developer: StasX
 #The project is under development
-#App version - v4.09Beta
+#App version - v4.10Beta
 #Copying the code is prohibited by SX copyright.
 
 
@@ -54,19 +57,50 @@ command4 = "localhost"
 command5 = "json"
 command6 = "qr"
 command7 = "qrcode"
+command8 = "ping"
+command9 = "passworld"
+command10 = "sxg install"
 
 def command_help():
     print("Command list:")
+    print("help - Display this list of commands")
+    print("loginCL - Login to your account")
+    print("support - Contact technical support")
+    print("localhost - Manage local server")
+    print("json - Manage JSON files")
+    print("qr - Manage QR codes")
+    print("exit - Exit the program")
 
     input_command()
 
+def generate_random_password(length=12):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(random.choice(characters) for _ in range(length))
+    return password
+
+def command_generate_password():
+    password_length = int(input("Enter the length of the password: "))
+    password = generate_random_password(password_length)
+    print("Generated password:", password)
+    input_command()
+
+def ping_host(host):
+    try:
+        subprocess.run(["ping", "-c", "4", host])
+        host_to_ping = input("Enter the host to ping: ")
+        ping_host(host_to_ping)
+    except Exception as e:
+        print("Error:", e)
+
 def command_loginCL():
-    print("ERROR!")
+    print("Not available in beta...")
     input_command()
 
 def command_support():
-    print(" edfd")
+    print("If you need assistance or have any questions, please contact our technical support.")
+    print("Site - http://sxcomp.42web.io/")
     input_command()
+
 
 def command_create_json():
     filename = input("Enter the filename for JSON: ")
@@ -212,7 +246,6 @@ def stop_local_server():
     file.write(text_to_write)
     raise KeyboardInterrupt
 
-
 def create_qrcode():
     print("Your text for the QR code:")
     qrcodetextdata = input()
@@ -348,6 +381,10 @@ def create_wifi_qrcode():
     os.startfile(img_path)
     input_command()
 
+def install_package(package_name):
+    # Логіка для встановлення пакету за назвою
+    print(f"Installing package {package_name}...")
+
 def input_command():
     command = input(Fore.BLUE + ">>> ")
     if command == command1:
@@ -383,8 +420,24 @@ def input_command():
         text_to_write = f"{formatted_time} The qrcode command is running\n"
         file.write(text_to_write)
         command_qrcode_menu()
+    elif command == command8:
+        text_to_write = f"{formatted_time} The ping command is running\n"
+        file.write(text_to_write)
+        host_to_ping = input("Enter the host to ping: ")
+        ping_host(host_to_ping)
+    elif command == command9:
+        text_to_write = f"{formatted_time} The passworld command is running\n"
+        file.write(text_to_write)
+        command_generate_password()
+    elif command.startswith("sxg install"):
+        text_to_write = f"{formatted_time} The sxg install command is running\n"
+        file.write(text_to_write)
+        package_name = command[len("sxg install "):]
+        install_package(package_name)
     else:
         print(Fore.RED + "Unknown command.")
+        text_to_write = f"{formatted_time}" + command + "Unknown command.\n"
+        file.write(text_to_write)
         text_to_write = f"{formatted_time} Error code: 404. Unknown command.\n"
         file.write(text_to_write)
         input_command()
