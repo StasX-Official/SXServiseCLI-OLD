@@ -48,14 +48,6 @@ logs.txt
 20:14:32 Error code: 404. Unknown command.
 20:14:32 Error code: 404. Unknown command.
 20:14:32 Error code: 404. Unknown command.
-20:14:32 Error code: 404. Unknown command.
-20:14:32 Error code: 404. Unknown command.
-20:14:32 Error code: 404. Unknown command.
-20:14:32 Error code: 404. Unknown command.
-20:14:32 Error code: 404. Unknown command.
-20:14:32 Error code: 404. Unknown command.
-20:14:32 Error code: 404. Unknown command.
-20:14:32 Error code: 404. Unknown command.
 20:14:32 The localhost command is running
 20:14:32 Starting localhost...
 20:14:32 Localhost server stopped.
