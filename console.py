@@ -6,6 +6,7 @@ import tqdm
 import qrcode
 import string
 import random
+import ctypes
 import platform
 import subprocess
 import http.server
@@ -14,15 +15,23 @@ from tqdm import tqdm
 from datetime import datetime
 from colorama import init, Fore, Back, Style
 
-#Project developer: StasX
-#The project is under development
-#App version - v4.10Beta 
-#Copying the code is prohibited by SX copyright.
-
 from System.functions.sxg_qrcode_command_v2300 import command_qrcode_menu
 
 from System.functions.sxg_localhost_command_v3400 import command_localhost
 
+from System.sxg_error_func import error
+
+
+
+app_id="SXSERVISECLIGLOBALFREE"
+app_com="githab.sxservise.sxcomp.42web.io"
+app_ver="4.14"
+
+
+#Project developer: StasX
+#The project is under development
+#App version - v4.15Beta 
+#Copying the code is prohibited by SX copyright.
 
 init(autoreset=True)
 ModuleNotFoundError = "Plugin not found. Install the plugin on our website https://sxcomp.42web.io/ or contact SX technical support."
@@ -30,7 +39,12 @@ current_time = datetime.now()
 formatted_time = current_time.strftime("%H:%M:%S")
 Yes = True
 No = False
+icon_path = os.path.abspath("logo.ico")
+appid = "sxcomp.sxservisecli.sxg.v4200Beta"
 file = open("logs.txt", "a")
+
+my_app_id = "sxservisecli.sxcomp.sxg"
+ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(my_app_id)
 
 def starting():
     print("Cheking files...")
@@ -64,16 +78,25 @@ command7 = "qrcode"
 command8 = "ping"
 command9 = "passworld"
 command10 = "sxg install"
+command11 = "http"
+command12 = "https"
+command13 = "dns"
+command14 = "host"
+command15 = "arduino"
+
 
 def command_help():
     print("Command list:")
     print("help - Display this list of commands")
-    print("loginCL - Login to your account")
+    print("loginCL - Login to your account BETA")
     print("support - Contact technical support")
     print("localhost - Manage local server")
     print("json - Manage JSON files")
     print("qr - Manage QR codes")
     print("exit - Exit the program")
+    print("http - Connecting to web servers")
+    print("dns - DNS analysis")
+    print("host - Checking the availability of hosts")
 
     input_command()
 
@@ -88,6 +111,7 @@ def ping_host(host):
         ping_host(host_to_ping)
     except Exception as e:
         print("Error:", e)
+        error("Error code: 4010. Error ping function", 1)
 
 def command_loginCL():
     print("Not available in beta...")
@@ -135,6 +159,7 @@ def command_read_json():
             print(data)
     except FileNotFoundError:
         print(Fore.RED + "File not found." + Style.RESET_ALL)
+        error("Error code: 404. File not found", 1)
 
 def command_check_json_validity():
     filename = input("Enter the filename for JSON: ")
@@ -145,6 +170,7 @@ def command_check_json_validity():
             print(Fore.GREEN + "JSON file is valid." + Style.RESET_ALL)
     except json.JSONDecodeError:
         print(Fore.RED + "JSON file is not valid." + Style.RESET_ALL)
+        error("Error code: 4041. JSON file is not valid.", 1)
 
 def command_sort_json_data():
     filename = input("Enter the filename for JSON: ")
@@ -157,6 +183,7 @@ def command_sort_json_data():
             print(sorted_data)
     except FileNotFoundError:
         print(Fore.RED + "File not found." + Style.RESET_ALL)
+        error("Error code: 404. File not found", 1)
 
 def command_json_menu():
     print("-----------------")
@@ -202,8 +229,8 @@ def command_additional_info():
     input_command()
 
 def install_package(package_name):
-    # Логіка для встановлення пакету за назвою
-    print(f"Installing package {package_name}...")
+    from System.local.Win32.sxg_install_com import sxg_install
+    sxg_install(package_name)
 
 def input_command():
     command = input(Fore.BLUE + ">>> ")
@@ -250,8 +277,29 @@ def input_command():
         file.write(text_to_write)
         package_name = command[len("sxg install "):]
         install_package(package_name)
+    elif command == command11:
+        text_to_write = f"{formatted_time} The http command is running\n"
+        file.write(text_to_write)
+        from System.functions.sxg_network_lib import http_req_func
+    elif command == command12:
+        text_to_write = f"{formatted_time} The https command is running\n"
+        file.write(text_to_write)
+        from System.functions.sxg_network_lib import http_req_func
+    elif command == command13:
+        text_to_write = f"{formatted_time} The dns command is running\n"
+        file.write(text_to_write)
+        from System.functions.sxg_network_lib import dns_lookup_func
+    elif command == command14:
+        text_to_write = f"{formatted_time} The host command is running\n"
+        file.write(text_to_write)
+        from System.functions.sxg_network_lib import check_host_av_func
+    elif command == command15:
+        text_to_write = f"{formatted_time} The arduino command is running\n"
+        file.write(text_to_write)
+        from System.functions.arduino.sxg_arduino_lib import sxg_arduino_Win32
     else:
         print(Fore.RED + "Unknown command.")
+        error("Error code: 404. Unknown command", 1)
         text_to_write = f"{formatted_time}" + command + "Unknown command.\n"
         file.write(text_to_write)
         text_to_write = f"{formatted_time} Error code: 404. Unknown command.\n"
