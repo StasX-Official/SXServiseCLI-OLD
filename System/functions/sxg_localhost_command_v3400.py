@@ -5,6 +5,7 @@ import json
 import tqdm
 import qrcode
 import string
+import ctypes
 import random
 import platform
 import subprocess
@@ -32,12 +33,21 @@ def command_localhost():
     print("")
     localhostcommand = int(input(Fore.BLUE + "sxservise >>> "))
     if localhostcommand == 0:
+
+        print("Edit localhost setings: ")
+        print("Local host port, default=8000:  ")
+        local_host_port = int(input())
+        print("Local host directory, default=localhostData: ")
+        local_host_directory = input()
+
         print("Starting localhost...")
         for i in tqdm(range(100)):
             time.sleep(0.01)
         text_to_write = f"{formatted_time} Starting localhost...\n"
         file.write(text_to_write)
-        start_local_server()
+
+        start_local_server(local_host_port, local_host_directory)
+
     elif localhostcommand == 1:
         print("Stopping localhost...")
         for i in tqdm(range(100)):
@@ -63,11 +73,13 @@ def stop_local_server():
     file.write(text_to_write)
     raise KeyboardInterrupt
 
-def start_local_server(port=8000, directory="localhostData"):
+def start_local_server(port, dir):
+    port = port
+    directory = dir
     handler = http.server.SimpleHTTPRequestHandler
     handler.directory = directory
     with socketserver.TCPServer(("", port), handler) as httpd:
-        message = f"Server started at port {port} - http://localhost:8000/"
+        message = f"Server started at port {port} - http://localhost:{port}/"
         print(Fore.RED + "Press Control + C to stop localhost")
         print(message)
 
