@@ -21,7 +21,6 @@ logs.txt
 15:45:53 The localhost command is running
 15:45:53 The help command is running
 15:45:53 The support command is running
-15:45:53 The login command is running
 15:45:53 The exit command is running
 15:47:18 The localhost command is running
 15:47:18 Starting localhost...
