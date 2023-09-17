@@ -229,8 +229,8 @@ def command_additional_info():
     input_command()
 
 def install_package(package_name):
-    from System.local.Win32.sxg_install_com import sxg_install
-    sxg_install(package_name)
+    print("This beta function")
+    input_command()
 
 def input_command():
     command = input(Fore.BLUE + ">>> ")
