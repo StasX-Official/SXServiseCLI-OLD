@@ -114,7 +114,7 @@ def ping_host(host):
         error("Error code: 4010. Error ping function", 1)
 
 def command_loginCL():
-    print("Not available in beta...")
+    print("Sorry, but you are using an old version and this feature is not available.")
     input_command()
 
 def select_ip():
